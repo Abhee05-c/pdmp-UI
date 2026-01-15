@@ -2,8 +2,9 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Gauge, Upload, Workflow, Users, ShieldCheck } from 'lucide-react';
+import { Gauge, Upload, Workflow, Users, ShieldCheck, Menu } from 'lucide-react';
 import { Logo } from '@/components/logo';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 export default function LandingPage() {
   const heroImage = PlaceHolderImages.find(p => p.id === 'hero-background');
@@ -43,7 +44,7 @@ export default function LandingPage() {
           <Logo className="h-6 w-6 text-primary" />
           <span className="text-xl font-bold tracking-tight">FlyHigh</span>
         </Link>
-        <nav className="ml-auto flex items-center gap-4 sm:gap-6">
+        <nav className="ml-auto hidden md:flex items-center gap-4 sm:gap-6">
           <Link
             href="/login"
             className="text-sm font-medium hover:underline underline-offset-4"
@@ -54,6 +55,32 @@ export default function LandingPage() {
             <Link href="/signup">Get Started</Link>
           </Button>
         </nav>
+        <div className="ml-auto md:hidden">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">Toggle navigation menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right">
+              <nav className="grid gap-6 text-lg font-medium mt-6">
+                <Link
+                  href="/login"
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  Login
+                </Link>
+                <Link
+                  href="/signup"
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  Get Started
+                </Link>
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
       </header>
       <main className="flex-1">
         <section className="relative w-full py-20 md:py-32 lg:py-40">
