@@ -5,6 +5,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Gauge, Upload, Workflow, Users, ShieldCheck, Menu } from 'lucide-react';
 import { Logo } from '@/components/logo';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { cn } from '@/lib/utils';
 
 export default function LandingPage() {
   const features = [
@@ -135,9 +136,15 @@ export default function LandingPage() {
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:max-w-none lg:grid-cols-3 pt-12">
-              {features.map((feature) => (
-                <div key={feature.title} className="flex flex-col gap-2 p-4 rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:max-w-none lg:grid-cols-6 pt-12">
+              {features.map((feature, index) => (
+                <div
+                  key={feature.title}
+                  className={cn(
+                    'flex flex-col gap-2 rounded-lg border bg-card p-4 text-card-foreground shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl',
+                    index < 3 ? 'lg:col-span-2' : 'lg:col-span-3'
+                  )}
+                >
                   <div className="flex items-center gap-4">
                     {feature.icon}
                     <h3 className="text-lg font-bold">{feature.title}</h3>
