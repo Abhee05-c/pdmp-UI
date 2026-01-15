@@ -87,7 +87,7 @@ export default function LandingPage() {
         <section className="relative w-full py-20 md:py-32 lg:py-40 bg-black">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,theme(colors.gray.800/50)_1px,transparent_1px),linear-gradient(to_bottom,theme(colors.gray.800/50)_1px,transparent_1px)] bg-[size:30px_30px]"></div>
           <div className="container relative px-4 md:px-6 text-center text-white">
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-4xl mx-auto">
               <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl font-headline">
                 Engine Health Monitoring & Remaining Useful Life Prediction
               </h1>
