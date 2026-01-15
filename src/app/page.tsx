@@ -99,7 +99,7 @@ export default function LandingPage() {
         <section className="relative w-full py-20 md:py-32 lg:py-40 bg-black">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,theme(colors.gray.800/50)_1px,transparent_1px),linear-gradient(to_bottom,theme(colors.gray.800/50)_1px,transparent_1px)] bg-[size:30px_30px]"></div>
           <div className="container relative px-4 md:px-6 text-center text-white">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-7xl mx-auto">
               <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl font-headline">
                 Engine Health Monitoring & Remaining Useful Life Prediction
               </h1>
@@ -137,7 +137,7 @@ export default function LandingPage() {
             </div>
             <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:max-w-none lg:grid-cols-3 pt-12">
               {features.map((feature) => (
-                <div key={feature.title} className="flex flex-col gap-2 p-4 rounded-lg border bg-card text-card-foreground shadow-sm transition-all hover:shadow-md">
+                <div key={feature.title} className="flex flex-col gap-2 p-4 rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
                   <div className="flex items-center gap-4">
                     {feature.icon}
                     <h3 className="text-lg font-bold">{feature.title}</h3>
