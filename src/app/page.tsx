@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Gauge, Upload, Workflow, Users, ShieldCheck, Menu } from 'lucide-react';
 import { Logo } from '@/components/logo';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 
 export default function LandingPage() {
   const heroImage = PlaceHolderImages.find(p => p.id === 'hero-background');
@@ -64,6 +64,9 @@ export default function LandingPage() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
+              <SheetHeader>
+                <SheetTitle className="sr-only">Mobile Navigation</SheetTitle>
+              </SheetHeader>
               <nav className="grid gap-6 text-lg font-medium mt-6">
                 <Link
                   href="/login"
