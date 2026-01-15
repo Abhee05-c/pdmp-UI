@@ -120,24 +120,23 @@ export default function DashboardLayout({
           <main className="flex-1 overflow-y-auto p-4 lg:p-6">
             {children}
           </main>
-          <footer className="flex flex-col gap-2 sm:flex-row py-4 w-full shrink-0 items-center px-4 md:px-6 border-t">
-            <p className="text-xs text-muted-foreground">
-              &copy; {new Date().getFullYear()} EstimateRUL Inc. All rights reserved.
-            </p>
-            <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-              <Link href="/docs" className="text-xs hover:underline underline-offset-4">
+          <footer className="flex flex-col gap-4 py-4 w-full shrink-0 items-center px-4 md:px-6 border-t">
+            <nav className="flex flex-wrap justify-center gap-4 sm:gap-6">
+                <Link href="/docs" className="text-xs hover:underline underline-offset-4">
                 Documentation
-              </Link>
-              <Link href="#" className="text-xs hover:underline underline-offset-4">
-                Contact
-              </Link>
-              <Link href="#" className="text-xs hover:underline underline-offset-4">
+                </Link>
+                <Link href="#" className="text-xs hover:underline underline-offset-4">
                 Terms
-              </Link>
-              <Link href="#" className="text-xs hover:underline underline-offset-4">
+                </Link>
+                <Link href="#" className="text-xs hover:underline underline-offset-4">
                 Privacy
-              </Link>
+                </Link>
             </nav>
+            <div className="text-xs text-muted-foreground text-center">
+                <p>Developed by Abhisekh Padhy</p>
+                <p><a href="mailto:abheelearns@gmail.com" className="hover:underline underline-offset-4">abheelearns@gmail.com</a> • Odisha, India</p>
+                <p className="mt-2">&copy; {new Date().getFullYear()} EstimateRUL Inc. All rights reserved.</p>
+            </div>
           </footer>
         </div>
       </div>
