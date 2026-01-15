@@ -89,7 +89,7 @@ export default function LandingPage() {
           <div className="container relative px-4 md:px-6 text-center text-white">
             <div className="max-w-3xl mx-auto">
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline">
-                Predictive Maintenance for the Modern Fleet
+                Engine Health Monitoring & Remaining Useful Life Prediction
               </h1>
               <p className="mt-4 text-xl md:text-2xl text-gray-300">
                 Leverage AI to anticipate engine failures, optimize maintenance
