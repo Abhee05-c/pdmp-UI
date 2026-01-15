@@ -156,8 +156,14 @@ export default function LandingPage() {
           &copy; {new Date().getFullYear()} EstimateRUL Inc. All rights reserved.
         </p>
         <nav className="sm:ml-auto flex gap-4 sm:gap-6">
+          <Link href="/docs" className="text-xs hover:underline underline-offset-4">
+            Documentation
+          </Link>
           <Link href="#" className="text-xs hover:underline underline-offset-4">
-            Terms of Service
+            Contact
+          </Link>
+          <Link href="#" className="text-xs hover:underline underline-offset-4">
+            Terms
           </Link>
           <Link href="#" className="text-xs hover:underline underline-offset-4">
             Privacy
