@@ -37,7 +37,7 @@ export default function DashboardLayout({
           <SidebarHeader>
             <div className="flex items-center gap-2">
               <Logo className="w-7 h-7 text-primary" />
-              <span className="text-lg font-semibold">AirWise</span>
+              <span className="text-lg font-semibold">FlyHigh</span>
             </div>
           </SidebarHeader>
           <SidebarContent className="p-2">

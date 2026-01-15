@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Filter } from "lucide-react";
 
 const logs = [
-    { id: 1, timestamp: "2024-05-21 10:00:15", user: "admin@airwise.io", action: "DISABLE_ORG", target: "org_3", details: "Disabled Wayne Enterprises" },
+    { id: 1, timestamp: "2024-05-21 10:00:15", user: "admin@flyhigh.io", action: "DISABLE_ORG", target: "org_3", details: "Disabled Wayne Enterprises" },
     { id: 2, timestamp: "2024-05-21 09:45:30", user: "john.doe@acme.com", action: "LOGIN_SUCCESS", target: "user_101", details: "User logged in successfully" },
     { id: 3, timestamp: "2024-05-21 09:45:01", user: "john.doe@acme.com", action: "LOGIN_FAIL", target: "user_101", details: "Failed login attempt" },
     { id: 4, timestamp: "2024-05-20 16:20:00", user: "admin@acme.com", action: "CREATE_USER", target: "user_104", details: "Created user alice.brown@acme.com" },

@@ -87,7 +87,7 @@ export default function AdminLayout({
               <ChevronsLeft className="h-5 w-5" />
             </SidebarTrigger>
             <div className="w-full flex-1">
-              <p className="font-semibold">AirWise Platform Administration</p>
+              <p className="font-semibold">FlyHigh Platform Administration</p>
             </div>
             <ThemeToggle />
             <UserNav />

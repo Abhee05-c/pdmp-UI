@@ -7,7 +7,7 @@ import { Toaster } from '@/components/ui/toaster';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: 'AirWise - Predictive Maintenance',
+  title: 'FlyHigh - Predictive Maintenance',
   description: 'Predictive Maintenance for the Modern Fleet',
 };
 
