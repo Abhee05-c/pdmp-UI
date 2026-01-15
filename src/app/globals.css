@@ -48,7 +48,7 @@
     --popover: 222 47% 11%;
     --popover-foreground: 210 40% 98%;
     --primary: 217 91% 60%;
-    --primary-foreground: 222 47% 11%;
+    --primary-foreground: 210 40% 98%;
     --secondary: 217 33% 17%;
     --secondary-foreground: 210 40% 98%;
     --muted: 217 33% 17%;
@@ -72,7 +72,7 @@
     --sidebar-primary: hsl(var(--primary));
     --sidebar-primary-foreground: hsl(var(--primary-foreground));
     --sidebar-accent: hsl(var(--primary));
-    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-accent-foreground: 210 40% 98%;
     --sidebar-border: 217 33% 14%;
     --sidebar-ring: hsl(var(--ring));
   }
