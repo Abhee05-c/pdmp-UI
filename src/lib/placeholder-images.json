@@ -1,3 +1,34 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-background",
+      "description": "An aircraft engine being inspected by an engineer.",
+      "imageUrl": "https://images.unsplash.com/photo-1715079005638-c37bfd236c1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YWlyY3JhZnQlMjBlbmdpbmV8ZW58MHx8fHwxNzY4NTAzOTgxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "aircraft engine"
+    },
+    {
+      "id": "user-avatar-1",
+      "description": "A portrait of a person.",
+      "imageUrl": "https://images.unsplash.com/photo-1521119989659-a83eee488004?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3Njg0NTYzODZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "user-avatar-2",
+      "description": "A portrait of another person.",
+      "imageUrl": "https://images.unsplash.com/photo-1610655507808-a59293f4e332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2ODQ2NDM4M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "engine-health-card",
+      "description": "Close-up of engine turbine blades.",
+      "imageUrl": "https://images.unsplash.com/photo-1609176210522-be2f1acf387c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx0dXJiaW5lJTIwYmxhZGVzfGVufDB8fHx8MTc2ODUwMzk4MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "turbine blades"
+    },
+    {
+      "id": "rul-prediction-card",
+      "description": "A futuristic heads-up display with data.",
+      "imageUrl": "https://images.unsplash.com/photo-1638328083481-a19976e07823?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmdXR1cmlzdGljJTIwSFVEfGVufDB8fHx8MTc2ODUwMzk4MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "futuristic HUD"
+    }
+  ]
 }
