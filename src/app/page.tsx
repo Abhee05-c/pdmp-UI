@@ -136,13 +136,14 @@ export default function LandingPage() {
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:max-w-none lg:grid-cols-6 pt-12">
+            <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:grid-cols-6 pt-12">
               {features.map((feature, index) => (
                 <div
                   key={feature.title}
                   className={cn(
                     'flex flex-col gap-2 rounded-lg border bg-card p-4 text-card-foreground shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl',
-                    index < 3 ? 'lg:col-span-2' : 'lg:col-span-3'
+                    'lg:col-span-2',
+                    index === 3 && 'lg:col-start-2'
                   )}
                 >
                   <div className="flex items-center gap-4">
