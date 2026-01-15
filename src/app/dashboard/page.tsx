@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Gauge, Activity, ShieldCheck, BarChart } from 'lucide-react';
 import {
