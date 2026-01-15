@@ -44,6 +44,12 @@ export default function LandingPage() {
         </Link>
         <nav className="ml-auto hidden md:flex items-center gap-4 sm:gap-6">
           <Link
+            href="/docs"
+            className="text-sm font-medium hover:underline underline-offset-4"
+          >
+            Documentation
+          </Link>
+          <Link
             href="/login"
             className="text-sm font-medium hover:underline underline-offset-4"
           >
@@ -66,6 +72,12 @@ export default function LandingPage() {
                 <SheetTitle className="sr-only">Mobile Navigation</SheetTitle>
               </SheetHeader>
               <nav className="grid gap-6 text-lg font-medium mt-6">
+                 <Link
+                  href="/docs"
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  Documentation
+                </Link>
                 <Link
                   href="/login"
                   className="text-muted-foreground hover:text-foreground"
