@@ -7,8 +7,6 @@ import { Logo } from '@/components/logo';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 
 export default function LandingPage() {
-  const heroImage = PlaceHolderImages.find(p => p.id === 'hero-background');
-
   const features = [
     {
       icon: <Upload className="w-8 h-8 text-primary" />,
@@ -86,18 +84,7 @@ export default function LandingPage() {
         </div>
       </header>
       <main className="flex-1">
-        <section className="relative w-full py-20 md:py-32 lg:py-40">
-          {heroImage && (
-            <Image
-              src={heroImage.imageUrl}
-              alt={heroImage.description}
-              fill
-              className="object-cover"
-              data-ai-hint={heroImage.imageHint}
-              priority
-            />
-          )}
-          <div className="absolute inset-0 bg-black/60" />
+        <section className="relative w-full py-20 md:py-32 lg:py-40 bg-[hsl(222_47%_11%)]">
           <div className="container relative px-4 md:px-6 text-center text-white">
             <div className="max-w-3xl mx-auto">
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline">
