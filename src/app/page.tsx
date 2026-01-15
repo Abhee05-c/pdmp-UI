@@ -92,8 +92,7 @@ export default function LandingPage() {
                 Engine Health Monitoring & Remaining Useful Life Prediction
               </h1>
               <p className="mt-4 text-xl md:text-2xl text-gray-300">
-                Leverage AI to anticipate engine failures, optimize maintenance
-                schedules, and ensure operational readiness.
+                Predict engine degradation early, estimate remaining useful life, and plan maintenance with confidence.
               </p>
               <div className="mt-8 flex justify-center gap-4">
                 <Button asChild size="lg">
