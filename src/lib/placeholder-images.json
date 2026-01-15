@@ -2,9 +2,9 @@
   "placeholderImages": [
     {
       "id": "hero-background",
-      "description": "An aircraft engine being inspected by an engineer.",
-      "imageUrl": "https://images.unsplash.com/photo-1715079005638-c37bfd236c1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YWlyY3JhZnQlMjBlbmdpbmV8ZW58MHx8fHwxNzY4NTAzOTgxfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "aircraft engine"
+      "description": "Slow-motion visual of an engine running.",
+      "imageUrl": "https://images.unsplash.com/photo-1494514853681-925298c5b966?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxqZXQlMjBlbmdpbmUlMjB0dXJiaW5lfGVufDB8fHx8MTc2ODQ1MDQyN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "engine running"
     },
     {
       "id": "user-avatar-1",
