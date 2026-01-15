@@ -18,7 +18,7 @@ const fontHeadline = Poppins({
 
 
 export const metadata: Metadata = {
-  title: 'FlyHigh - Predictive Maintenance',
+  title: 'EstimateRUL - Predictive Maintenance',
   description: 'Predictive Maintenance for the Modern Fleet',
 };
 
@@ -32,7 +32,7 @@ export default function RootLayout({
       <head>
         {/* The new next/font integration handles font loading, so manual links are not needed. */}
       </head>
-      <body className={`${fontBody.variable} ${fontHeadline.variable} font-body antialiased`}>
+      <body className={`${fontBody.variable} ${fontHeadline.variable} font-body antialiased text-base`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

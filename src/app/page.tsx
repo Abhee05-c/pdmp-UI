@@ -42,7 +42,7 @@ export default function LandingPage() {
       <header className="px-4 lg:px-6 h-16 flex items-center border-b">
         <Link href="/" className="flex items-center justify-center gap-2">
           <Logo className="h-6 w-6 text-primary" />
-          <span className="text-xl font-bold tracking-tight">FlyHigh</span>
+          <span className="text-xl font-bold tracking-tight">EstimateRUL</span>
         </Link>
         <nav className="ml-auto hidden md:flex items-center gap-4 sm:gap-6">
           <Link
@@ -103,7 +103,7 @@ export default function LandingPage() {
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline">
                 Predictive Maintenance for the Modern Fleet
               </h1>
-              <p className="mt-4 text-lg md:text-xl text-gray-300">
+              <p className="mt-4 text-xl md:text-2xl text-gray-300">
                 Leverage AI to anticipate engine failures, optimize maintenance
                 schedules, and ensure operational readiness.
               </p>
@@ -130,7 +130,7 @@ export default function LandingPage() {
                   A Smarter Way to Maintain Your Assets
                 </h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  FlyHigh provides a comprehensive suite of tools to move from
+                  EstimateRUL provides a comprehensive suite of tools to move from
                   reactive fixes to proactive, data-driven maintenance
                   strategies.
                 </p>
@@ -154,7 +154,7 @@ export default function LandingPage() {
       </main>
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
         <p className="text-xs text-muted-foreground">
-          &copy; {new Date().getFullYear()} FlyHigh Inc. All rights reserved.
+          &copy; {new Date().getFullYear()} EstimateRUL Inc. All rights reserved.
         </p>
         <nav className="sm:ml-auto flex gap-4 sm:gap-6">
           <Link href="#" className="text-xs hover:underline underline-offset-4">

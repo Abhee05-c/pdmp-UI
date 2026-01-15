@@ -23,7 +23,7 @@ export default function OrganizationsPage() {
                 <CardHeader>
                     <CardTitle>Platform Organizations</CardTitle>
                     <CardDescription>
-                        Manage all registered organizations on the FlyHigh platform.
+                        Manage all registered organizations on the EstimateRUL platform.
                     </CardDescription>
                 </CardHeader>
                 <CardContent>

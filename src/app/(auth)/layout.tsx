@@ -10,7 +10,7 @@ export default function AuthLayout({
         <div className="min-h-screen flex flex-col items-center justify-center bg-secondary">
             <div className="mb-6 flex items-center gap-2">
                 <Logo className="h-8 w-8 text-primary" />
-                <h1 className="text-3xl font-bold tracking-tight">FlyHigh</h1>
+                <h1 className="text-3xl font-bold tracking-tight">EstimateRUL</h1>
             </div>
             {children}
             <p className="text-center text-sm text-muted-foreground mt-6">

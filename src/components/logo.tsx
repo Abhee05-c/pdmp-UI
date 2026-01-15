@@ -1,4 +1,5 @@
 import type { SVGProps } from 'react';
+import { ShieldCheck } from 'lucide-react';
 
 export function Logo(props: SVGProps<SVGSVGElement>) {
   return (
@@ -12,11 +13,9 @@ export function Logo(props: SVGProps<SVGSVGElement>) {
         strokeLinejoin="round"
         {...props}
     >
-        <title>FlyHigh Logo</title>
-        <path d="M2 22l8-2 3.5-3.5-2-8-8-2z" />
-        <path d="M10 14L2 22" />
-        <path d="M16.5 7.5l-3.5-3.5" />
-        <path d="M22 2l-2.5 5.5-3.5-3.5L14 2z" />
+        <title>EstimateRUL Logo</title>
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <path d="m9 12 2 2 4-4" />
     </svg>
   );
 }
