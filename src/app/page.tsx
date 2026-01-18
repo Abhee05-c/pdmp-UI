@@ -144,7 +144,7 @@ export default function LandingPage() {
                     Key Features
                   </div>
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline">
-                    A Smarter Way to Maintain Your Assets
+                    A Smarter Way to Maintain Your Fleet
                   </h2>
                   <p className="mx-auto max-w-2xl text-center text-muted-foreground md:text-xl leading-relaxed">
                     EstimateRUL provides a comprehensive suite of tools to move from
