@@ -10,7 +10,9 @@ import * as z from 'zod';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Loader, Wand2 } from 'lucide-react';
-import { getPredictionFromLiveData } from '@/app/actions/predict';
+import api from "@/lib/api";
+import { generateSuggestedResolutions } 
+from "@/ai/flows/generate-suggested-resolutions";
 
 const sensorDataSchema = z.object({
   cycle: z.coerce.number().min(0, { message: 'Cycle must be positive.' }),
@@ -30,7 +32,6 @@ const sensorDataSchema = z.object({
 
 type PredictionResult = {
   rul: number;
-  confidence: number;
   resolutions: string[];
 };
 
@@ -58,7 +59,7 @@ export default function PredictLivePage() {
   const form = useForm<z.infer<typeof sensorDataSchema>>({
     resolver: zodResolver(sensorDataSchema),
     defaultValues: {
-      cycle: 192, op1: -0.0007, op2: -0.0004, op3: 100, s3: 1400.6, s4: 554.36, s9: 9046.73, s11: 47.47, s12: 521.66, s13: 2388.02, s14: 8138.62, s15: 8.4195, s20: 392
+      cycle: 0, op1: 0.00, op2: 0.00, op3: 0.00, s3: 0.00, s4: 0.00, s9: 0.00, s11: 0.00, s12: 0.00, s13: 0.00, s14: 0.00, s15: 0.00, s20: 0.00
     },
   });
 
@@ -66,32 +67,38 @@ export default function PredictLivePage() {
     setIsLoading(true);
     setResult(null);
 
-    const predictionResult = await getPredictionFromLiveData(values);
-    
-    if (predictionResult.error) {
-        toast({
-            variant: 'destructive',
-            title: 'Prediction Failed',
-            description: predictionResult.error,
-        });
-        setResult({
-          rul: predictionResult.rul,
-          confidence: predictionResult.confidence,
-          resolutions: predictionResult.resolutions
-        });
-    } else {
-        setResult({
-          rul: predictionResult.rul,
-          confidence: predictionResult.confidence,
-          resolutions: predictionResult.resolutions
-        });
-        toast({
-            title: 'Prediction Complete',
-            description: 'AI-powered analysis is displayed below.',
-        });
+    try {
+      const payload = {
+        sensor_data: [values], 
+      };
+
+      const res = await api.post("/predict/liveData", payload);
+
+      const aiRes = await generateSuggestedResolutions({
+              sensorData: [], // optional or last few rows if you want
+              predictedRUL: res.data.Predicted_RUL,
+              predictionConfidence: 0, // for schema 
+            });
+            // Adapt to backend response shape
+            setResult({
+              rul: res.data.Predicted_RUL,
+              resolutions: aiRes.suggestedResolutions,
+            });
+
+      toast({
+        title: "Prediction Complete",
+        description: "Live RUL prediction generated successfully.",
+      });
+
+    } catch (err: any) {
+      toast({
+        variant: "destructive",
+        title: "Prediction Failed",
+        description: err.response?.data?.detail || "Live prediction failed",
+      });
+    } finally {
+      setIsLoading(false);
     }
-    
-    setIsLoading(false);
   };
 
   return (
@@ -127,7 +134,7 @@ export default function PredictLivePage() {
                   ))}
                 </div>
                 <Button type="submit" disabled={isLoading} className="w-full mt-4">
-                  {isLoading ? <><Loader className="mr-2 h-4 w-4 animate-spin" /> Analyzing...</> : 'Predict RUL'}
+                  {isLoading ? <><Loader className="mr-2 h-4 w-4 animate-spin" /> Analyzing</> : 'Predict RUL'}
                 </Button>
               </form>
             </Form>
@@ -145,7 +152,7 @@ export default function PredictLivePage() {
             {isLoading ? (
               <div className="flex flex-col items-center gap-2 text-muted-foreground">
                 <Loader className="h-8 w-8 animate-spin text-primary" />
-                <p>Generating AI recommendations...</p>
+                <p>Generating AI recommendations</p>
               </div>
             ) : result ? (
               <div className="w-full space-y-4">
@@ -153,10 +160,6 @@ export default function PredictLivePage() {
                   <div className="p-4 bg-secondary rounded-lg">
                     <p className="text-sm text-muted-foreground">Predicted RUL</p>
                     <p className="text-3xl font-bold">{result.rul} <span className="text-lg font-normal">cycles</span></p>
-                  </div>
-                  <div className="p-4 bg-secondary rounded-lg">
-                    <p className="text-sm text-muted-foreground">Confidence</p>
-                    <p className="text-3xl font-bold">{(result.confidence * 100).toFixed(1)}%</p>
                   </div>
                 </div>
                 <div>
@@ -169,7 +172,7 @@ export default function PredictLivePage() {
                 </div>
               </div>
             ) : (
-              <p className="text-muted-foreground text-center">Awaiting data submission...</p>
+              <p className="text-muted-foreground text-center">Upload The CSV To Study The Inference</p>
             )}
           </CardContent>
         </Card>

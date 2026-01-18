@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import api from "@/lib/api";
 import {
   Card,
   CardContent,
@@ -44,16 +45,34 @@ export default function SignupPage() {
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    // In a real app, you would call your API here.
-    console.log(values);
-    toast({
-      title: "Signup Successful",
-      description: "Your organization has been created. Please log in.",
-    });
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    router.push("/login");
+ const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      const res = await api.post("/auth/signup", {
+        org_name: values.org_name,
+        org_email: values.org_email,
+        username: values.username,
+        password: values.password,
+      });
+
+      // Store JWT
+      localStorage.setItem("access_token", res.data.access_token);
+
+      toast({
+        title: "Signup Successful",
+        description: "Organization created successfully.",
+      });
+
+      // Redirect to dashboard
+      router.push("/dashboard");
+
+    } catch (err: any) {
+      toast({
+        title: "Signup Failed",
+        description:
+          err.response?.data?.detail || "Unable to create account",
+        variant: "destructive",
+      });
+    }
   };
 
   return (

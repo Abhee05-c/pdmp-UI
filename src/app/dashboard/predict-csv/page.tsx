@@ -5,11 +5,13 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/components/ui/use-toast';
 import { UploadCloud, File, X, Loader, Wand2 } from 'lucide-react';
-import { getPredictionFromCsv } from '@/app/actions/predict';
+import api from "@/lib/api";
+import { generateSuggestedResolutions } 
+from "@/ai/flows/generate-suggested-resolutions";
+
 
 type PredictionResult = {
   rul: number;
-  confidence: number;
   resolutions: string[];
 };
 
@@ -68,37 +70,41 @@ export default function PredictCsvPage() {
       });
       return;
     }
-    
+
     setIsLoading(true);
     setResult(null);
 
-    const predictionResult = await getPredictionFromCsv();
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
 
-    if (predictionResult.error) {
-        toast({
-            variant: 'destructive',
-            title: 'Prediction Failed',
-            description: predictionResult.error,
-        });
-        // Even if AI fails, show the mock stats with error resolutions
-        setResult({
-            rul: predictionResult.rul,
-            confidence: predictionResult.confidence,
-            resolutions: predictionResult.resolutions,
-        });
-    } else {
-        setResult({
-            rul: predictionResult.rul,
-            confidence: predictionResult.confidence,
-            resolutions: predictionResult.resolutions,
-        });
-        toast({
-            title: 'Prediction Complete',
-            description: 'AI-powered analysis is displayed below.',
-        });
+      const res = await api.post("/predict/csvUpload", formData);
+
+      const aiRes = await generateSuggestedResolutions({
+        sensorData: [], // optional or last few rows if you want
+        predictedRUL: res.data.Predicted_RUL,
+        predictionConfidence: 0, // for schema 
+      });
+      // Adapt to backend response shape
+      setResult({
+        rul: res.data.Predicted_RUL,
+        resolutions: aiRes.suggestedResolutions,
+      });
+
+      toast({
+        title: "Prediction Complete",
+        description: "RUL prediction generated successfully.",
+      });
+
+    } catch (err: any) {
+      toast({
+        variant: "destructive",
+        title: "Prediction Failed",
+        description: err.response?.data?.detail || "Unable to process CSV",
+      });
+    } finally {
+      setIsLoading(false);
     }
-
-    setIsLoading(false);
   };
 
   return (
@@ -158,7 +164,7 @@ export default function PredictCsvPage() {
               )}
             </div>
             <Button onClick={handleSubmit} disabled={!file || isLoading} className="w-full mt-4">
-              {isLoading ? <><Loader className="mr-2 h-4 w-4 animate-spin" /> Analyzing...</> : 'Predict RUL'}
+              {isLoading ? <><Loader className="mr-2 h-4 w-4 animate-spin" /> Analyzing</> : 'Predict RUL'}
             </Button>
           </CardContent>
         </Card>
@@ -174,7 +180,7 @@ export default function PredictCsvPage() {
             {isLoading ? (
               <div className="flex flex-col items-center gap-2 text-muted-foreground">
                 <Loader className="h-8 w-8 animate-spin text-primary" />
-                <p>Generating AI recommendations...</p>
+                <p>Generating AI recommendations</p>
               </div>
             ) : result ? (
               <div className="w-full space-y-4">
@@ -182,10 +188,6 @@ export default function PredictCsvPage() {
                   <div className="p-4 bg-secondary rounded-lg">
                     <p className="text-sm text-muted-foreground">Predicted RUL</p>
                     <p className="text-3xl font-bold">{result.rul} <span className="text-lg font-normal">cycles</span></p>
-                  </div>
-                  <div className="p-4 bg-secondary rounded-lg">
-                    <p className="text-sm text-muted-foreground">Confidence</p>
-                    <p className="text-3xl font-bold">{(result.confidence * 100).toFixed(1)}%</p>
                   </div>
                 </div>
                 <div>
@@ -198,7 +200,7 @@ export default function PredictCsvPage() {
                 </div>
               </div>
             ) : (
-              <p className="text-muted-foreground text-center">Awaiting data upload...</p>
+              <p className="text-muted-foreground text-center">Upload The CSV To Study The Inference</p>
             )}
           </CardContent>
         </Card>

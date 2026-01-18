@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import api from "@/lib/api";
 import {
   Card,
   CardContent,
@@ -41,18 +42,36 @@ export default function LoginPage() {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    // In a real app, you would call your API here.
-    // For this demo, we'll simulate a successful login.
-    console.log(values);
-    toast({
-      title: "Login Successful",
-      description: "Redirecting to your dashboard...",
-    });
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    // In a real app, you'd store the token and redirect.
-    router.push("/dashboard");
+    try {
+      const formData = new URLSearchParams();
+      formData.append("username", values.username);
+      formData.append("password", values.password);
+
+      const res = await api.post("/auth/login", formData, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
+
+      // Store JWT
+      localStorage.setItem("access_token", res.data.access_token);
+
+      toast({
+        title: "Login Successful",
+        description: "Redirecting to your dashboard...",
+      });
+
+      router.push("/dashboard");
+
+    } catch (err: any) {
+      toast({
+        title: "Login Failed",
+        description: "Invalid username or password",
+        variant: "destructive",
+      });
+    }
   };
+
 
   return (
     <Card className="w-full max-w-sm">

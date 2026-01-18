@@ -46,9 +46,9 @@ const prompt = ai.definePrompt({
   name: 'suggestedResolutionsPrompt',
   input: {schema: SuggestedResolutionsInputSchema},
   output: {schema: SuggestedResolutionsOutputSchema},
-  prompt: `You are an AI assistant specialized in providing solutions for predictive maintenance in industrial machinery.
+  prompt: `You are an AI assistant specialized in providing solutions for predictive maintenance in industrial machinery prior to engines.
 
-  Based on the provided sensor data, predicted remaining useful life (RUL), and prediction confidence, generate a list of suggested resolutions to address any potential issues.
+  Based on the provided sensor data, predicted remaining useful life (RUL), generate a list of suggested resolutions to address any potential issues.
 
   Sensor Data:
   {{#each sensorData}}
@@ -56,7 +56,6 @@ const prompt = ai.definePrompt({
   {{/each}}
 
   Predicted RUL: {{predictedRUL}}
-  Prediction Confidence: {{predictionConfidence}}
 
   Suggested Resolutions: `,
 });
