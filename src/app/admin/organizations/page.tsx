@@ -43,7 +43,7 @@ export default function AdminOrganizationsPage() {
     await loadOrgs();
   }
 
-  if (loading) return <p>Loading organizations...</p>;
+  if (loading) return <p>Loading organizations</p>;
 
   return (
     <div className="space-y-6">
