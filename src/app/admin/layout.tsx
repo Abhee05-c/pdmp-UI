@@ -55,7 +55,7 @@ export default function AdminLayout({
   return (
     <ClientOnly>
       <SidebarProvider>
-        <div className="flex h-screen bg-background">
+        <div className="flex h-screen w-full bg-background">
           <Sidebar>
             <SidebarHeader>
               <div className="flex items-center gap-2">
@@ -116,7 +116,7 @@ export default function AdminLayout({
               <ThemeToggle />
               <UserNav />
             </header>
-            <main className="flex-1 overflow-y-auto p-4 lg:p-6">
+            <main className="flex-1 w-full min-w-0 overflow-y-auto p-4 lg:p-6">
               {children}
             </main>
           </div>

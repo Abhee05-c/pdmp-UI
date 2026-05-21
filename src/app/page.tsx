@@ -104,23 +104,26 @@ export default function LandingPage() {
         </div>
       </header>
       <main className="flex-1">
-        <section className="relative w-full py-20 md:py-32 lg:py-40 bg-black overflow-hidden">
+        <section className="relative w-full pt-12 pb-24 md:pt-16 md:pb-36 lg:pt-20 lg:pb-40 bg-black overflow-hidden">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,theme(colors.gray.900/80)_1px,transparent_1px),linear-gradient(to_bottom,theme(colors.gray.900/80)_1px,transparent_1px)] bg-[size:30px_30px]"></div>
           
-          {/* Subtle colored glow in the background */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-primary/20 rounded-full blur-[140px] pointer-events-none"></div>
+          {/* Contextual scanning grid beam animation */}
+          <div className="animate-grid-scan"></div>
+          
+          {/* Subtle colored glow in the background (pulsing/floating) */}
+          <div className="absolute top-1/2 left-1/2 w-[600px] h-[300px] bg-primary/20 rounded-full blur-[140px] pointer-events-none animate-radial-glow"></div>
 
           <div className="relative px-4 md:px-6 text-center text-white flex justify-center">
             <div className="w-full max-w-5xl flex flex-col items-center">
-              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl font-headline bg-gradient-to-b from-white via-white to-slate-400 bg-clip-text text-transparent leading-tight">
+              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl font-headline bg-gradient-to-b from-white via-white to-slate-400 bg-clip-text text-transparent leading-tight animate-fade-in-up-1">
                 Engine Health Monitoring & Remaining Useful Life Prediction
               </h1>
 
-              <p className="mt-6 text-lg md:text-xl text-slate-400 max-w-3xl leading-relaxed">
+              <p className="mt-6 text-lg md:text-xl text-slate-400 max-w-3xl leading-relaxed animate-fade-in-up-2">
                 Predict engine degradation early, estimate remaining useful life (RUL), and plan fleet maintenance with confidence using advanced generative AI and ML analytics.
               </p>
 
-              <div className="mt-10 flex justify-center gap-4">
+              <div className="mt-10 flex justify-center gap-4 animate-fade-in-up-3">
                 <Button asChild size="lg">
                   <Link href="/signup">Request a Demo</Link>
                 </Button>

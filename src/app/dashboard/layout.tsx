@@ -51,7 +51,7 @@ export default function DashboardLayout({
   return (
     <ClientOnly>
       <SidebarProvider>
-        <div className="flex h-screen bg-background">
+        <div className="flex h-screen w-full bg-background">
           <Sidebar>
             <SidebarHeader>
               <div className="flex items-center gap-2">

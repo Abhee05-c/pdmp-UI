@@ -33,12 +33,12 @@
     /* Sidebar Light Theme */
     --sidebar-background: 220 20% 94%;
     --sidebar-foreground: 222 47% 11%;
-    --sidebar-primary: hsl(var(--primary));
-    --sidebar-primary-foreground: hsl(var(--primary-foreground));
-    --sidebar-accent: hsl(var(--primary));
-    --sidebar-accent-foreground: hsl(var(--primary-foreground));
+    --sidebar-primary: var(--primary);
+    --sidebar-primary-foreground: var(--primary-foreground);
+    --sidebar-accent: var(--primary);
+    --sidebar-accent-foreground: var(--primary-foreground);
     --sidebar-border: 220 15% 88%;
-    --sidebar-ring: hsl(var(--ring));
+    --sidebar-ring: var(--ring);
   }
   .dark {
     --background: 222 47% 11%;
@@ -69,12 +69,12 @@
     /* Sidebar Dark Theme */
     --sidebar-background: 222 47% 9%;
     --sidebar-foreground: 210 40% 90%;
-    --sidebar-primary: hsl(var(--primary));
-    --sidebar-primary-foreground: hsl(var(--primary-foreground));
-    --sidebar-accent: hsl(var(--primary));
+    --sidebar-primary: var(--primary);
+    --sidebar-primary-foreground: var(--primary-foreground);
+    --sidebar-accent: var(--primary);
     --sidebar-accent-foreground: 215 28% 17%;
     --sidebar-border: 217 33% 14%;
-    --sidebar-ring: hsl(var(--ring));
+    --sidebar-ring: var(--ring);
   }
 }
 
@@ -84,5 +84,74 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  @keyframes scan {
+    0% {
+      top: 0%;
+      opacity: 0;
+    }
+    5% {
+      opacity: 0.8;
+    }
+    95% {
+      opacity: 0.8;
+    }
+    100% {
+      top: 100%;
+      opacity: 0;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.15;
+    }
+    50% {
+      transform: translate(-50%, -55%) scale(1.15);
+      opacity: 0.25;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-grid-scan {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.5), transparent);
+    animation: scan 6s linear infinite;
+    pointer-events: none;
+  }
+
+  .animate-radial-glow {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .animate-fade-in-up-1 {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-fade-in-up-2 {
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+  }
+
+  .animate-fade-in-up-3 {
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
   }
 }
