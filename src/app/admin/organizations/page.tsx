@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { useToast } from "@/components/ui/use-toast";
 import {
   getOrganizations,
   disableOrganization,
@@ -19,12 +20,20 @@ type Org = {
 export default function AdminOrganizationsPage() {
   const [orgs, setOrgs] = useState<Org[]>([]);
   const [loading, setLoading] = useState(true);
+  const { toast } = useToast();
 
   async function loadOrgs() {
     setLoading(true);
     try {
       const data = await getOrganizations();
       setOrgs(data);
+    } catch (err: any) {
+      console.error("Failed to load organizations", err);
+      toast({
+        title: "Error loading organizations",
+        description: err.response?.data?.detail || err.message || "Something went wrong",
+        variant: "destructive",
+      });
     } finally {
       setLoading(false);
     }

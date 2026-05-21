@@ -8,19 +8,26 @@ import { Filter } from "lucide-react";
 
 import { useEffect, useState } from "react";
 import api from "@/lib/api"; // axios instance with JWT
+import { useToast } from "@/components/ui/use-toast";
 
 
 export default function AuditLogsPage() {
   const [logs, setLogs] = useState<any[]>([]);
   const [filter, setFilter] = useState("");
+  const { toast } = useToast();
 
   useEffect(() => {
     const fetchLogs = async () => {
       try {
         const res = await api.get("/admin/auditlogs");
         setLogs(res.data);
-      } catch (err) {
+      } catch (err: any) {
         console.error("Failed to fetch audit logs", err);
+        toast({
+          title: "Error loading audit logs",
+          description: err.response?.data?.detail || err.message || "Something went wrong",
+          variant: "destructive",
+        });
       }
     };
 

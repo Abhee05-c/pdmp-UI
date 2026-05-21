@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useToast } from "@/components/ui/use-toast";
 import {
   getOrgUsers,
   disableUser,
@@ -16,18 +17,50 @@ export default function AdminOrgUsersPage() {
   const orgId = Number(params.org_id);
 
   const [users, setUsers] = useState<any[]>([]);
+  const { toast } = useToast();
+
+  async function loadUsers() {
+    try {
+      const data = await getOrgUsers(orgId);
+      setUsers(data);
+    } catch (err: any) {
+      console.error("Failed to load organization users", err);
+      toast({
+        title: "Error loading users",
+        description: err.response?.data?.detail || err.message || "Something went wrong",
+        variant: "destructive",
+      });
+    }
+  }
 
   useEffect(() => {
-    getOrgUsers(orgId).then(setUsers);
+    loadUsers();
   }, [orgId]);
 
   async function toggleUser(user: any) {
-    if (user.is_active) {
-      await disableUser(user.user_id);
-    } else {
-      await enableUser(user.user_id);
+    try {
+      if (user.is_active) {
+        await disableUser(user.user_id);
+        toast({
+          title: "User Disabled",
+          description: `Successfully disabled user ${user.name}`,
+        });
+      } else {
+        await enableUser(user.user_id);
+        toast({
+          title: "User Enabled",
+          description: `Successfully enabled user ${user.name}`,
+        });
+      }
+      await loadUsers();
+    } catch (err: any) {
+      console.error("Failed to toggle user status", err);
+      toast({
+        title: "Action Failed",
+        description: err.response?.data?.detail || err.message || "Something went wrong",
+        variant: "destructive",
+      });
     }
-    setUsers(await getOrgUsers(orgId));
   }
 
   return (
