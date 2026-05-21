@@ -91,7 +91,7 @@ export default function LoginPage() {
                 <FormItem>
                   <FormLabel>Username</FormLabel>
                   <FormControl>
-                    <Input placeholder="user@acme.com" {...field} />
+                    <Input placeholder="Your Name assigned by your Organization" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -104,7 +104,7 @@ export default function LoginPage() {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input type="password" placeholder="••••••••" {...field} />
+                    <Input type="password" placeholder="Your Passcode" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

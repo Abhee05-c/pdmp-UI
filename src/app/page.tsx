@@ -104,20 +104,23 @@ export default function LandingPage() {
         </div>
       </header>
       <main className="flex-1">
-        <section className="relative w-full py-20 md:py-32 lg:py-40 bg-black">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,theme(colors.gray.800/50)_1px,transparent_1px),linear-gradient(to_bottom,theme(colors.gray.800/50)_1px,transparent_1px)] bg-[size:30px_30px]"></div>
+        <section className="relative w-full py-20 md:py-32 lg:py-40 bg-black overflow-hidden">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,theme(colors.gray.900/80)_1px,transparent_1px),linear-gradient(to_bottom,theme(colors.gray.900/80)_1px,transparent_1px)] bg-[size:30px_30px]"></div>
+          
+          {/* Subtle colored glow in the background */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-primary/20 rounded-full blur-[140px] pointer-events-none"></div>
 
           <div className="relative px-4 md:px-6 text-center text-white flex justify-center">
             <div className="w-full max-w-5xl flex flex-col items-center">
-              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl font-headline">
+              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl font-headline bg-gradient-to-b from-white via-white to-slate-400 bg-clip-text text-transparent leading-tight">
                 Engine Health Monitoring & Remaining Useful Life Prediction
               </h1>
 
-              <p className="mt-4 text-xl md:text-2xl text-gray-300 max-w-3xl">
-                Predict engine degradation early, estimate remaining useful life, and plan maintenance with confidence.
+              <p className="mt-6 text-lg md:text-xl text-slate-400 max-w-3xl leading-relaxed">
+                Predict engine degradation early, estimate remaining useful life (RUL), and plan fleet maintenance with confidence using advanced generative AI and ML analytics.
               </p>
 
-              <div className="mt-8 flex justify-center gap-4">
+              <div className="mt-10 flex justify-center gap-4">
                 <Button asChild size="lg">
                   <Link href="/signup">Request a Demo</Link>
                 </Button>
@@ -140,7 +143,7 @@ export default function LandingPage() {
               {/* Heading */}
               <div className="flex flex-col items-center justify-center space-y-4 text-center">
                 <div className="space-y-2">
-                  <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">
+                  <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm font-semibold text-primary">
                     Key Features
                   </div>
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline">
@@ -154,17 +157,19 @@ export default function LandingPage() {
               </div>
 
               {/* Features Grid */}
-              <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-2.5 place-items-center">
+              <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 w-full">
                 {features.map((feature) => (
                   <div
                     key={feature.title}
-                    className="flex flex-col gap-2 rounded-lg border bg-card p-5 text-card-foreground shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+                    className="flex flex-col gap-3 rounded-xl border bg-card p-6 text-card-foreground shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-md hover:border-primary/20"
                   >
                     <div className="flex items-center gap-4">
-                      {feature.icon}
+                      <div className="p-2 rounded-lg bg-primary/10">
+                        {feature.icon}
+                      </div>
                       <h3 className="text-lg font-bold">{feature.title}</h3>
                     </div>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-muted-foreground leading-relaxed mt-1">
                       {feature.description}
                     </p>
                   </div>
